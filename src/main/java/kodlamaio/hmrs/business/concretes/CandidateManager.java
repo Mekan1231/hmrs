@@ -52,7 +52,7 @@ public class CandidateManager implements CandidateService {
         
     
         Candidates candidate= this.mapper.forRequest().map(request,Candidates.class);
-        userRepository.save(candidate);
+        //userRepository.save(candidate);
         candidateRepository.save(candidate);
         EmailVerificationCandidate verifiedCandidate = this.mapper.forRequest().map(userRepository.findTopByOrderByIdDesc(),EmailVerificationCandidate.class);
         verificationRepository.save(verifiedCandidate);
