@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kodlamaio.hmrs.business.rules.abstracts.UserRuleService;
+import kodlamaio.hmrs.business.rules.abstracts.EmployerRuleService;
 import kodlamaio.hmrs.core.utilities.verifiations.abstracts.Verification;
 import kodlamaio.hmrs.dataAccess.abstracts.EmployerRepository;
 import kodlamaio.hmrs.entities.concrete.Employer;
 
 @Service
-public class EmployerRuleManager implements UserRuleService {
+public class EmployerRuleManager implements EmployerRuleService {
 
     @Autowired
     private EmployerRepository repository;
@@ -28,12 +28,15 @@ public class EmployerRuleManager implements UserRuleService {
     @Override
     public boolean checkIfExistEmail(String email) {
         this.employers=this.repository.findAll();
+        if (this.employers==null) {
+            return false;  
+          }
         for (Employer employer : employers) {
             if (email.equals(employer.getEmail())) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     @Override

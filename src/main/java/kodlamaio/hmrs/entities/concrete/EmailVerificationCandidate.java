@@ -1,5 +1,8 @@
 package kodlamaio.hmrs.entities.concrete;
 
+import java.util.Date;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,8 +23,11 @@ public class EmailVerificationCandidate {
     @Column(name = "id")
     private int id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "candidate_id")
     private Candidates candidate;
+
+    @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Date createdAt;
 
 }

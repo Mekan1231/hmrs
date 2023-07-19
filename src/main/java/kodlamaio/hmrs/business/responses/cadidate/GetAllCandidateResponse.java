@@ -10,4 +10,6 @@ public class GetAllCandidateResponse {
     private String lastName;
     private String identityNo;
     private Date birthDate;
+    private String email;
+    private String password;
 }
