@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hmrs.business.rules.abstracts.JobRuleService;
-import kodlamaio.hmrs.business.rules.abstracts.RuleService;
 import kodlamaio.hmrs.dataAccess.abstracts.JobRepository;
 import kodlamaio.hmrs.entities.concrete.Job;
 import lombok.AllArgsConstructor;
