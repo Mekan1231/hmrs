@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -38,4 +39,15 @@ public class JobExperience {
 
     @Column(name = "finish_date")
     private Timestamp finishDate;
+
+    @Column(name = "is_currently_working")
+    private boolean isCurrentlyWorking;
+
+
+    @PrePersist
+    public void prePersist() {
+        if (finishDate!=null) {
+            isCurrentlyWorking=true;
+        }
+    }
 }

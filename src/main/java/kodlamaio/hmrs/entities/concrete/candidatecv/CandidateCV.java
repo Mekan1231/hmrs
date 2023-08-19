@@ -2,8 +2,6 @@ package kodlamaio.hmrs.entities.concrete.candidatecv;
 
 import java.util.Date;
 
-import org.hibernate.annotations.ManyToAny;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,8 +26,6 @@ public class CandidateCV {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "image_url")
-    private String imageUrl;
     
     @Column(name = "github_url")
     private String githubUrl;

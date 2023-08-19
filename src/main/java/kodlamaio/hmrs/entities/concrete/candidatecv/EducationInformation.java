@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -26,12 +27,15 @@ public class EducationInformation {
     @Column(name = "id")
     private int id;
     
-    @Column(name = "start_date")
+    @Column(name = "start_date", nullable = false)
     @NotNull
     private Timestamp startDate;
 
-    @Column(name = "finish_date")
+    @Column(name = "finish_date",nullable = true)
     private Timestamp finishDate;
+
+    @Column(name = "is_currently_enrolled")
+    private boolean isCurrentlyEnrolled=false;
 
     @ManyToOne
     @JoinColumn(name = "school_id")
@@ -40,5 +44,12 @@ public class EducationInformation {
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+
+    @PrePersist
+    public void prePersist() {
+        if (finishDate!=null) {
+            isCurrentlyEnrolled=true;
+        }
+    }
     
 }
